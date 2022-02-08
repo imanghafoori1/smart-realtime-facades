@@ -1,0 +1,43 @@
+{
+  "name": "imanghafoori/smart-realtime-facades",
+  "description": "Real-time facades with IDE auto-completion.",
+  "keywords": ["laravel", "facade"],
+  "license": "MIT",
+  "homepage": "https://github.com/imanghafoori1/smart-realtime-facades",
+  "authors": [
+    {
+      "name": "Iman Ghafoori",
+      "email": "imanghafoori1@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "7.2.*|7.3.*|7.4.*|8.0.*|8.1.*",
+    "laravel/framework":"~5.1|6.*|7.*|8.*|9.*"
+  },
+  "require-dev": {
+    "orchestra/testbench": "~7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Imanghafoori\\RealtimeFacades\\": "src"
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "phpcs": "phpcs src --standard=PSR2",
+    "phpcbf": "phpcbf src --standard=PSR2"
+  },
+  "suggest": {
+    "imanghafoori/laravel-heyman": "It allows to write expressive code to authorize, validate and authenticate.",
+    "imanghafoori/laravel-widgetize": "Gives you a better structure and caching opportunity for your laravel apps.",
+    "imanghafoori/laravel-masterpass": "You can set a master password for your accounts.",
+    "imanghafoori/laravel-terminator": "Gives you opportunity to refactor your controllers."
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Imanghafoori\\RealtimeFacades\\SmartRealTimeFacadesProvider"
+      ]
+    }
+  }
+}
