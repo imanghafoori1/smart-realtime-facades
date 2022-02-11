@@ -11,12 +11,12 @@ use Throwable;
 
 class SmartRealTimeFacadesProvider extends ServiceProvider
 {
-    private static $facadeNamespace = '_Facade';
+    private static $facadeNamespace = '_Facades';
 
     public function register()
     {
         spl_autoload_register(function ($alias) {
-            if (Str::startsWith($alias, ['_Facades\\'])) {
+            if (Str::startsWith($alias, [self::$facadeNamespace.'\\'])) {
                 require self::ensureFacadeExists($alias);
             }
         });
