@@ -1,9 +1,16 @@
 # Smart Real-time Facades:
 
+## Do not loose IDE auto-completion with real-time fcades!
+
 Real-time facades in laravel are great, but they have a problem. When you use them, you quickly fall out of ide auto-completion and you are out of confidence.
 This package generates the facade file with enough doc-blocks to provide you with all the neat IDE helps. Nice?
 
 It works exactly like the internal laravel realtime facades.
+
+Sample Generated File:
+
+![image](https://user-images.githubusercontent.com/6961695/153766733-7d190d3f-b0cd-44c1-8617-a34b0bc6aa64.png)
+
 
 ### Install:
 
