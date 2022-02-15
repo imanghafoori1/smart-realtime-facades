@@ -21,7 +21,7 @@ composer require imanghafoori/smart-realtime-facades
 ### Usage:
 
 
-Just prefix you class namespace path with `_Facades\` and convert the `->` to `::` then you are good to go.
+Just prefix your class namespace path with `_Facades\` and convert the `->` to `::` then you are good to go.
 
 In case you want to facadize `App\Services\MyKlass`, change it to `_Facades\App\Services\MyKlass`.
 
