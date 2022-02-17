@@ -15,17 +15,12 @@ Sample Generated File:
 ### Install:
 
 ```bash
-composer require imanghafoori/smart-realtime-facades
+composer require imanghafoori/smart-realtime-facades --dev
 ```
 
 ### Usage:
 
-
-Just prefix your class namespace path with `_Facades\` and convert the `->` to `::` then you are good to go.
-
-In case you want to facadize `App\Services\MyKlass`, change it to `_Facades\App\Services\MyKlass`.
-
-`(new MyKlass)->hi();` will turn into `MyKlass::hi();`
+After the installation, you should delete the old real-time facade files, one way is to just run `php artisan cache:clear` so that get cleaned and will be regenrated with docblocks or you can visit the `storage/cache/` folder and delete the facade files by hand.
 
 ---------------------
 

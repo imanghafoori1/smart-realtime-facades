@@ -11,7 +11,7 @@ use Throwable;
 
 class SmartRealTimeFacadesProvider extends ServiceProvider
 {
-    private static $facadeNamespace = '_Facades';
+    private static $facadeNamespace = 'Facades';
 
     public function register()
     {
@@ -19,7 +19,7 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
             if (Str::startsWith($alias, [self::$facadeNamespace.'\\'])) {
                 require self::ensureFacadeExists($alias);
             }
-        });
+        }, true, true);
     }
 
     public static function ensureFacadeExists($alias)
@@ -33,7 +33,7 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
         return $path;
     }
 
-    protected static function formatFacadeStub($alias, $stub)
+    public static function formatFacadeStub($alias, $stub)
     {
         $replacements = [
             str_replace('/', '\\', dirname(str_replace('\\', '/', $alias))),
