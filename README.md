@@ -20,7 +20,7 @@ composer require imanghafoori/smart-realtime-facades --dev
 
 ### Usage:
 
-After the installation, you should delete the old real-time facade files, one way is to just run `php artisan cache:clear` so that get cleaned and will be regenrated with docblocks or you can visit the `storage/cache/` folder and delete the facade files by hand.
+You do not need to do anything, it regenerates your facade files if they need to be updated when you call them.
 
 ---------------------
 
