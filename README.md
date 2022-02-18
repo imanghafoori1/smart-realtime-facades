@@ -9,7 +9,7 @@ It works exactly like the internal laravel realtime facades.
 
 Sample Generated File:
 
-![image](https://user-images.githubusercontent.com/6961695/153766733-7d190d3f-b0cd-44c1-8617-a34b0bc6aa64.png)
+![image](https://user-images.githubusercontent.com/6961695/154666361-172ef404-2abf-47b4-8ea6-5a7df27cb33f.png)
 
 
 ### Install:
