@@ -15,6 +15,10 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
 
     public function register()
     {
+        if ($this->app->isProduction()) {
+            return;
+        }
+
         spl_autoload_register(function ($alias) {
             if (Str::startsWith($alias, [self::$facadeNamespace.'\\'])) {
                 require self::ensureFacadeExists($alias);
@@ -24,11 +28,15 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
 
     public static function ensureFacadeExists($alias)
     {
+        $contents = self::formatFacadeStub($alias, self::getStub());
+
         if (is_file($path = storage_path('framework/cache/facade-'.sha1($alias).'.php'))) {
-            return $path;
+            if ($contents === file_get_contents($path)) {
+                return $path;
+            }
         }
 
-        file_put_contents($path, self::formatFacadeStub($alias, self::getStub()));
+        file_put_contents($path, $contents);
 
         return $path;
     }
