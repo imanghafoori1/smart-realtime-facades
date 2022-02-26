@@ -111,6 +111,10 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
             $defaultValue = $strDefaultValue.']';
         } elseif (is_string($defaultValue)) {
             $defaultValue = '"'.$defaultValue.'"';
+        } elseif (is_null($defaultValue)) {
+            $defaultValue = 'null';
+        } elseif (is_bool($defaultValue)) {
+            $defaultValue = $defaultValue ? 'true' : 'false';
         }
 
         return ' = '.$defaultValue;
