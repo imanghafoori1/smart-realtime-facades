@@ -85,6 +85,9 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
             $signature = '('.trim($signature, ', ').')';
 
             $returnType = $method->hasReturnType() ? $method->getReturnType().' ' : '';
+            if (Str::contains($returnType, '\\') && $returnType[0] !== '\\') {
+                $returnType = '\\'.$returnType;
+            }
             $methodName = $method->getName();
             $methodsDoc .= ' * @method static '.$returnType.$methodName.$signature.PHP_EOL;
         }
