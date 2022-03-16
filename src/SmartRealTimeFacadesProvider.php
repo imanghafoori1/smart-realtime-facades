@@ -15,7 +15,7 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
 
     public function register()
     {
-        if ($this->app->isProduction()) {
+        if (config('app.env') === 'production') {
             return;
         }
 
