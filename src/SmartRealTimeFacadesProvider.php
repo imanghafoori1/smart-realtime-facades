@@ -13,6 +13,42 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
 {
     private static $facadeNamespace = 'Facades';
 
+    public static function getDocBlocks(array $publicMethods): string
+    {
+        $methodsDoc = '';
+        foreach ($publicMethods as $method) {
+            if ($method->isStatic()) {
+                continue;
+            }
+
+            $params = $method->getParameters();
+            $signature = '';
+            foreach ($params as $param) {
+                $name = $param->getName();
+                $type = $param->getType();
+                if ($type) {
+                    $type = $type.' ';
+                }
+                $defaultValue = self::getDefaultValue($param);
+
+                $signature = $signature.$type.'$'.$name.$defaultValue.', ';
+            }
+
+            $signature = '('.trim($signature, ', ').')';
+
+            $returnType = $method->hasReturnType() ? $method->getReturnType().' ' : '';
+            if (Str::contains($returnType, '\\') && $returnType[0] !== '\\') {
+                $returnType = '\\'.$returnType;
+            }
+            $methodName = $method->getName();
+            $methodsDoc .= ' * @method static '.$returnType.$methodName.$signature.PHP_EOL;
+        }
+
+        $methodsDoc .= ' *';
+
+        return $methodsDoc;
+    }
+
     public function register()
     {
         if ($this->app->isProduction()) {
@@ -64,36 +100,7 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
     {
         $publicMethods = (new ReflectionClass($class))->getMethods(ReflectionMethod::IS_PUBLIC);
 
-        $methodsDoc = '';
-        foreach ($publicMethods as $method) {
-            if ($method->isStatic()) {
-                continue;
-            }
-
-            $params = $method->getParameters();
-            $signature = '';
-            foreach ($params as $param) {
-                $name = $param->getName();
-                $type = $param->getType();
-                if ($type) {
-                    $type = $type.' ';
-                }
-                $defaultValue = self::getDefaultValue($param);
-
-                $signature = $signature.$type.'$'.$name.$defaultValue.', ';
-            }
-            $signature = '('.trim($signature, ', ').')';
-
-            $returnType = $method->hasReturnType() ? $method->getReturnType().' ' : '';
-            if (Str::contains($returnType, '\\') && $returnType[0] !== '\\') {
-                $returnType = '\\'.$returnType;
-            }
-            $methodName = $method->getName();
-            $methodsDoc .= ' * @method static '.$returnType.$methodName.$signature.PHP_EOL;
-        }
-        $methodsDoc .= ' *';
-
-        return $methodsDoc;
+        return self::getDocBlocks($publicMethods);
     }
 
     public static function getDefaultValue(ReflectionParameter $param): string
