@@ -25,7 +25,7 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
             $signature = '';
             foreach ($params as $param) {
                 $name = $param->getName();
-                $type = normalizeQuestionMarkInType($param->getType());
+                $type = $this->normalizeQuestionMarkInType($param->getType());
                 if ($type) {
                     $type = $type.' ';
                 }
@@ -36,7 +36,7 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
 
             $signature = '('.trim($signature, ', ').')';
 
-            $returnType = $method->hasReturnType() ? normalizeQuestionMarkInType($method->getReturnType()).' ' : '';
+            $returnType = $method->hasReturnType() ? $this->normalizeQuestionMarkInType($method->getReturnType()).' ' : '';
             if (Str::contains($returnType, '\\') && $returnType[0] !== '\\') {
                 $returnType = '\\'.$returnType;
             }
