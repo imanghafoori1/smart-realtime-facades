@@ -36,7 +36,7 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
 
             $signature = '('.trim($signature, ', ').')';
 
-            $returnType = $method->hasReturnType() ? $method->getReturnType().' ' : '';
+            $returnType = $method->hasReturnType() ? normalizeQuestionMarkInReturnType($method->getReturnType()).' ' : '';
             if (Str::contains($returnType, '\\') && $returnType[0] !== '\\') {
                 $returnType = '\\'.$returnType;
             }
@@ -128,6 +128,13 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
         }
 
         return ' = '.$defaultValue;
+    }
+    
+    /**
+     * convert ? to null| 
+     */
+    private function normalizeQuestionMarkInReturnType(string $returnType):string{
+      return  str_replace('?', 'null|', $returnType);
     }
 
     public static function getStub()
