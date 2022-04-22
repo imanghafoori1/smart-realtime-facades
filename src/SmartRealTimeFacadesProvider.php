@@ -25,7 +25,7 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
             $signature = '';
             foreach ($params as $param) {
                 $name = $param->getName();
-                $type = $param->getType();
+                $type = self::normalizeQuestionMarkInType($param->getType());
                 if ($type) {
                     $type = $type.' ';
                 }
@@ -36,7 +36,7 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
 
             $signature = '('.trim($signature, ', ').')';
 
-            $returnType = $method->hasReturnType() ? normalizeQuestionMarkInReturnType($method->getReturnType()).' ' : '';
+            $returnType = $method->hasReturnType() ? self::normalizeQuestionMarkInType($method->getReturnType()).' ' : '';
             if (Str::contains($returnType, '\\') && $returnType[0] !== '\\') {
                 $returnType = '\\'.$returnType;
             }
@@ -129,12 +129,13 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
 
         return ' = '.$defaultValue;
     }
-    
+
     /**
-     * convert ? to null| 
+     * convert ? to null|
      */
-    private function normalizeQuestionMarkInReturnType(string $returnType):string{
-      return  str_replace('?', 'null|', $returnType);
+    private static function normalizeQuestionMarkInType(string $type)
+    {
+        return str_replace('?', 'null|', $type);
     }
 
     public static function getStub()
