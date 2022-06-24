@@ -25,9 +25,8 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
             $signature = '';
             foreach ($params as $param) {
                 $name = $param->getName();
-                $type = self::normalizeQuestionMarkInType($param->getType());
-                if ($type) {
-                    $type = $type.' ';
+                if ($type = $param->getType()) {
+                    $type = self::normalizeQuestionMarkInType($type).' ';
                 }
                 $defaultValue = self::getDefaultValue($param);
 
@@ -133,7 +132,7 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
     /**
      * convert ? to null|
      */
-    private static function normalizeQuestionMarkInType(string $type)
+    private static function normalizeQuestionMarkInType($type = '')
     {
         return str_replace('?', 'null|', $type);
     }
