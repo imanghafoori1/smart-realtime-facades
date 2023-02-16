@@ -26,6 +26,9 @@ class SmartRealTimeFacadesProvider extends ServiceProvider
             foreach ($params as $param) {
                 $name = $param->getName();
                 if ($type = $param->getType()) {
+                    if (class_exists($type)) {
+                        $type = '\\'.$type;
+                    }
                     $type = self::normalizeQuestionMarkInType($type).' ';
                 }
                 $defaultValue = self::getDefaultValue($param);

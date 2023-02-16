@@ -1,18 +1,22 @@
-# Smart Real-time Facades:
+# Smart Real-time Facades
 
 ## Do not lose IDE auto-completion with real-time facades!
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/imanghafoori/smart-realtime-facades.svg?style=flat-square)](https://packagist.org/packages/imanghafoori/smart-realtime-facades)
+[![Total Downloads](https://img.shields.io/packagist/dt/imanghafoori/smart-realtime-facades.svg?style=flat-square)](https://packagist.org/packages/imanghafoori/smart-realtime-facades)
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
 Real-time facades in laravel are great, but they have a problem. When you use them, you quickly fall out of ide auto-completion and you are out of confidence.
 This package generates the facade file with enough doc-blocks to provide you with all the neat IDE helps. Nice?
 
 It works exactly like the internal laravel realtime facades.
 
-Sample Generated File:
+Sample Generated Facade File:
 
 ![image](https://user-images.githubusercontent.com/6961695/154666361-172ef404-2abf-47b4-8ea6-5a7df27cb33f.png)
 
 
-### Install:
+### Installation:
 
 ```bash
 composer require imanghafoori/smart-realtime-facades --dev
@@ -27,8 +31,6 @@ You do not need to do anything, it regenerates your facade files if they need to
 ### :raising_hand: Contributing:
 
 If you find an issue or have a better way to do something, feel free to open an issue, or a pull request.
-If you use smart-realtime-facades in your open source project, create a pull request to provide its URL as a sample application in the README.md file.
-
 
 ### :exclamation: Security
 If you discover any security-related issues, please email `imanghafoori1@gmail.com` instead of using the issue tracker.
@@ -44,10 +46,11 @@ If you discover any security-related issues, please email `imanghafoori1@gmail.c
 
 - https://github.com/imanghafoori1/laravel-heyman
 
+--------------------
 
 #### Laravel Microscope:
 
-:gem: Find bugs before they bit.
+:gem: Find bugs before they bite.
 
 - https://github.com/imanghafoori1/laravel-microscope
 
